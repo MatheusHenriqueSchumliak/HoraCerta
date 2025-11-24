@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HoraCerta.Application\HoraCerta.Application.csproj" />
+    <ProjectReference Include="..\HoraCerta.CrossCutting\HoraCerta.CrossCutting.csproj" />
     <ProjectReference Include="..\HoraCerta.Infrastructure\HoraCerta.Infrastructure.csproj" />
   </ItemGroup>
 
