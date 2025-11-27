@@ -12,6 +12,7 @@ D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debu
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debug\net8.0\HoraCerta.CrossCutting.AssemblyInfoInputs.cache
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debug\net8.0\HoraCerta.CrossCutting.AssemblyInfo.cs
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debug\net8.0\HoraCerta.CrossCutting.csproj.CoreCompileInputs.cache
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debug\net8.0\HoraCerta.CrossCutting.sourcelink.json
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debug\net8.0\HoraCert.A94CCDDE.Up2Date
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debug\net8.0\HoraCerta.CrossCutting.dll
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.CrossCutting\obj\Debug\net8.0\refint\HoraCerta.CrossCutting.dll

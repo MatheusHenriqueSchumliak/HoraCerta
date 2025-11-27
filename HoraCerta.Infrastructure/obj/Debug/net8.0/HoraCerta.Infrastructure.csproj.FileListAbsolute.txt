@@ -11,6 +11,7 @@ D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\De
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\Debug\net8.0\HoraCerta.Infrastructure.AssemblyInfoInputs.cache
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\Debug\net8.0\HoraCerta.Infrastructure.AssemblyInfo.cs
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\Debug\net8.0\HoraCerta.Infrastructure.csproj.CoreCompileInputs.cache
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\Debug\net8.0\HoraCerta.Infrastructure.sourcelink.json
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\Debug\net8.0\HoraCert.2E2B8850.Up2Date
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\Debug\net8.0\HoraCerta.Infrastructure.dll
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Infrastructure\obj\Debug\net8.0\refint\HoraCerta.Infrastructure.dll

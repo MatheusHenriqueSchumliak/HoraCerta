@@ -8,6 +8,7 @@ D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug\net8.0\HoraCerta.Application.AssemblyInfoInputs.cache
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug\net8.0\HoraCerta.Application.AssemblyInfo.cs
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug\net8.0\HoraCerta.Application.csproj.CoreCompileInputs.cache
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug\net8.0\HoraCerta.Application.sourcelink.json
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug\net8.0\HoraCert.7AAEC905.Up2Date
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug\net8.0\HoraCerta.Application.dll
 D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Application\obj\Debug\net8.0\refint\HoraCerta.Application.dll
