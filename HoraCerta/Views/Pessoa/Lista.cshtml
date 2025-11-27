@@ -1,0 +1,66 @@
+﻿@model HoraCerta.Domain.Entities.Base.ListaPaginada<HoraCerta.Application.ViewModels.Pessoa.PessoaViewModel>
+
+@{
+    ViewData["Title"] = "Pessoas";
+}
+
+<h1>Pessoas</h1>
+<a asp-action="Criar" class="btn btn-primary mb-2">Nova Pessoa</a>
+
+@if (Model.Items == null || !Model.Items.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        Nenhuma pessoa cadastrada.
+    </div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>CPF</th>
+                <th>Celular</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pessoa in Model.Items)
+            {
+                var tz = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"); // Windows
+                // Para Linux, use: "America/Sao_Paulo"
+                var dataBrasilia = TimeZoneInfo.ConvertTimeFromUtc(pessoa.DataCadastro, tz);
+                <tr>
+                    <td>@pessoa.Nome</td>
+                    <td>@pessoa.SobreNome</td>
+                    <td>@pessoa.Cpf</td>
+                    <td>@pessoa.Celular</td>
+                    <td>@dataBrasilia</td>
+                    <td>
+                        <a asp-action="Editar" asp-route-id="@pessoa.Id" class="btn btn-sm btn-warning">Editar</a>
+                        <a asp-action="Exibir" asp-route-id="@pessoa.Id" class="btn btn-sm btn-info">Detalhes</a>
+                        <a asp-action="Excluir" asp-route-id="@pessoa.Id" class="btn btn-sm btn-danger">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<nav>
+    <ul class="pagination">
+        <li class="page-item @(Model.TemAnterior ? "" : "disabled")">
+            <a class="page-link" asp-action="Index" asp-route-page="@(Model.NumeroPagina - 1)">Anterior</a>
+        </li>
+        @for (int i = 1; i <= Model.TotalPaginas; i++)
+        {
+            <li class="page-item @(i == Model.NumeroPagina ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-route-page="@i">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.TemProximo ? "" : "disabled")">
+            <a class="page-link" asp-action="Index" asp-route-page="@(Model.NumeroPagina + 1)">Próximo</a>
+        </li>
+    </ul>
+</nav>

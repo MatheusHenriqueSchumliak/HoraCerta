@@ -1,0 +1,12 @@
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\bin\Debug\net8.0\HoraCerta.Domain.deps.json
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\bin\Debug\net8.0\HoraCerta.Domain.dll
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\bin\Debug\net8.0\HoraCerta.Domain.pdb
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\HoraCerta.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\HoraCerta.Domain.AssemblyInfoInputs.cache
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\HoraCerta.Domain.AssemblyInfo.cs
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\HoraCerta.Domain.csproj.CoreCompileInputs.cache
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\HoraCerta.Domain.sourcelink.json
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\HoraCerta.Domain.dll
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\refint\HoraCerta.Domain.dll
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\HoraCerta.Domain.pdb
+D:\DESENVOLVIMENTO\Projetos Aleatorios\HoraCerta\HoraCerta.Domain\obj\Debug\net8.0\ref\HoraCerta.Domain.dll
