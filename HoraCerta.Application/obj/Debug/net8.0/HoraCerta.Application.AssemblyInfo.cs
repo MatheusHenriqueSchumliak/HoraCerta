@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HoraCerta.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84959f616f64ef14cdd18c798d7f50d6eb28219e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96200d52b57e0c95b51f6ad8bdecbb7d7a052710")]
 [assembly: System.Reflection.AssemblyProductAttribute("HoraCerta.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HoraCerta.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
