@@ -361,3 +361,34 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Node / frontend
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log
+
+# Environment files
+.env
+.env.*.local
+
+# VS Code
+.vscode/
+
+# LibMan (opcional: descomente se você NÃO quiser versionar wwwroot/lib)
+# wwwroot/lib/
+
+# Database & tooling
+*.sqlite
+*.db
+*.db3
+*.bak
+
+# Published output
+/publish/
+/wwwroot/dist/
+
+# Secret files
+secrets.json
+appsettings.*.Local.json

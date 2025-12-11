@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";
+}
+
+<div class="d-flex align-items-center justify-content-center">
+    <div class="card shadow-sm p-4" >
+        <h2 class="mb-4 text-center">Entrar</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label for="Input_Email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="Input_Email" name="Email" required autofocus />
+            </div>
+            <div class="mb-3">
+                <label for="Input_Password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="Input_Password" name="Password" required />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Entrar</button>
+        </form>
+    </div>
+</div>
