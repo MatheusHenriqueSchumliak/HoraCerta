@@ -7,6 +7,10 @@
     <UserSecretsId>9516692b-5bfc-4987-961c-227dd1f85a26</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+	  <Deterministic>true</Deterministic>
+	  <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+	  <UseSharedCompilation>true</UseSharedCompilation>
+	  <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
