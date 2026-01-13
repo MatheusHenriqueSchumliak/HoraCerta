@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HoraCerta.CrossCutting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96200d52b57e0c95b51f6ad8bdecbb7d7a052710")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44d225e1485103ce656eb9973e7e8536324c9518")]
 [assembly: System.Reflection.AssemblyProductAttribute("HoraCerta.CrossCutting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HoraCerta.CrossCutting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
