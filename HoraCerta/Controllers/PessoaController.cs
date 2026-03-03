@@ -1,16 +1,29 @@
 ﻿using HoraCerta.Application.Interfaces.IServices;
 using HoraCerta.Application.ViewModels.Pessoa;
+using HoraCerta.CrossCutting.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HoraCerta.Controllers;
 
+[Route("[controller]/[action]")]
 public class PessoaController : Controller
 {
 	private readonly IPessoaService _pessoaService;
+	private readonly IViaCepService _viaCepService;
 
-	public PessoaController(IPessoaService pessoaService)
+	public PessoaController(IPessoaService pessoaService, IViaCepService viaCepService)
 	{
 		_pessoaService = pessoaService;
+		_viaCepService = viaCepService;
+	}
+
+	[HttpGet("{cep}")]
+	public async Task<IActionResult> ConsultarCep(string cep)
+	{
+		// ... validação do cep ...
+		var result = await _viaCepService.ConsultarCepAsync(cep);
+		if (result == null) return NotFound(new { erro = true, mensagem = "CEP não encontrado" });
+		return Ok(result);
 	}
 
 	// GET: Pessoas

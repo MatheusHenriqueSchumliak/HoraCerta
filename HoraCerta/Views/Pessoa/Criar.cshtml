@@ -7,6 +7,8 @@
 <h1>Criar Pessoa</h1>
 
 <form asp-action="Criar" method="post" class="row g-3">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
     <div class="col-md-6">
         <label asp-for="Nome" class="form-label"></label>
         <input asp-for="Nome" class="form-control" />
@@ -42,7 +44,7 @@
     <div class="col-md-4">
         <label asp-for="Endereco.CEP" class="form-label"></label>
         <input asp-for="Endereco.CEP" class="form-control" />
-        <span asp-validation-for="Endereco.CEP" class="text-danger"></span>
+        <span asp-validation-for="Endereco.CEP" class="text-danger" id="cep-error"></span>
     </div>
     <div class="col-md-8">
         <label asp-for="Endereco.Rua" class="form-label"></label>
@@ -82,4 +84,8 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <validation-summary />
+
+    <!-- Remova a função inline e inclua o script externo -->
+    <script src="~/js/Pessoa/Criar.js" asp-append-version="true"></script>
 }

@@ -1,22 +1,199 @@
-html {
-  font-size: 14px;
+﻿html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Tipografia e responsividade base */
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Variáveis de tema (claro por padrão) */
+:root {
+    --bg: #ffffff;
+    --text: #212529;
+    --muted: #6c757d;
+    --card-bg: #ffffff;
+    --card-border: rgba(0,0,0,0.08);
+    --navbar-bg: #ffffff;
+    --navbar-text: #212529;
+    --link: #0d6efd;
+    --footer-bg: #f8f9fa;
+    --primary: #0b63d4;
+    --focus-shadow: 0 0 0 0.08rem rgba(37,140,251,0.12);
+    --transition-fast: 0.12s linear;
+}
+
+/* Tema escuro - Estilo Claude (cinza neutro) */
+.dark-theme {
+    --bg: #2f2f2f; /* fundo principal - cinza médio neutro */
+    --text: #ececec; /* texto principal - branco quente */
+    --muted: #a8a8a8; /* texto secundário */
+    --card-bg: #3d3d3d; /* fundo de cartões / inputs - cinza mais claro */
+    --card-border: rgba(255,255,255,0.06);
+    --navbar-bg: #2f2f2f;
+    --navbar-text: #ececec;
+    --link: #8ab4f8; /* azul suave estilo Google/Claude */
+    --footer-bg: #2a2a2a;
+    --primary: #8ab4f8; /* botão primário azul suave */
+    --focus-shadow: 0 0 0 0.2rem rgba(138, 180, 248, 0.25);
+    --input-focus-bg: #424242; /* fundo de input quando ativo */
+}
+
+/* Reset e aplicação das variáveis */
+html, body {
+    height: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color .18s ease, color .18s ease;
+}
+
+/* Layout para footer no fim da página */
+body {
+    margin-bottom: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Componentes */
+.navbar, .navbar-light, .navbar-dark {
+    background-color: var(--navbar-bg) !important;
+}
+
+.navbar .nav-link, .navbar-brand {
+    color: var(--navbar-text) !important;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--text);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.footer, footer, .border-top.footer {
+    background-color: var(--footer-bg);
+    color: var(--muted);
+}
+
+/* Links */
+a {
+    color: var(--link);
+}
+
+    a:hover {
+        color: var(--link);
+        opacity: 0.8;
+    }
+
+/* Formulários, tabelas e botões */
+.table {
+    color: var(--text);
+}
+
+/* Força a cor de fundo e borda dos inputs para usar as variáveis do tema.
+   Uso de !important para sobrepor regras do Bootstrap que definem fundo branco. */
+.form-control,
+.form-select,
+textarea,
+.select {
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+    border-color: var(--card-border) !important;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+    /* Estado de foco: fundo levemente alterado e sombra sutil */
+    .form-control:focus,
+    .form-select:focus,
+    textarea:focus {
+        background-color: var(--input-focus-bg, var(--card-bg)) !important;
+        border-color: var(--link) !important;
+        box-shadow: var(--focus-shadow) !important;
+        outline: none;
+        -webkit-text-fill-color: var(--text) !important; /* para o caso de autofill */
+    }
+
+    /* Corrige o comportamento do autofill do Chrome/Edge/Safari para ficar com fundo escuro */
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px var(--card-bg) inset !important;
+        box-shadow: 0 0 0 1000px var(--card-bg) inset !important;
+        -webkit-text-fill-color: var(--text) !important;
+    }
+
+/* Botões */
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #fff;
+}
+
+/* foco: usa variável para suavizar sombra */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-check-input:focus {
+    box-shadow: var(--focus-shadow);
+}
+
+/* Pequena transição visual global */
+* {
+    transition: background-color .12s linear, color .12s linear, border-color .12s linear;
+}
+
+/* Ajustes específicos para login */
+.login-card {
+    max-width: 420px;
+    width: 100%;
+    border-radius: .4rem;
+}
+
+/* Segurança: garante que campos com background branco do bootstrap sejam sobrescritos no .dark-theme */
+.dark-theme .form-control,
+.dark-theme .form-select,
+.dark-theme textarea {
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+    border-color: var(--card-border) !important;
 }

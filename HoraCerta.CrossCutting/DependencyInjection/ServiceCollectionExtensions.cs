@@ -3,29 +3,34 @@ using HoraCerta.Application.Interfaces.IServices;
 using Microsoft.Extensions.DependencyInjection;
 using HoraCerta.Infrastructure.Repository;
 using Microsoft.Extensions.Configuration;
+using HoraCerta.CrossCutting.Interfaces;
+using HoraCerta.CrossCutting.Services;
 using HoraCerta.Application.Services;
 
-namespace HoraCerta.CrossCutting.DependencyInjection
+namespace HoraCerta.CrossCutting.DependencyInjection;
+
+public static class ServiceCollectionExtensions
 {
-	public static class ServiceCollectionExtensions
+	public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
 	{
-		public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
-		{
-			//Registro de dependências:
-			#region Application Services
-			//services.AddScoped<IProfissionalService, ProfissionalService>();
-			services.AddScoped<IPessoaService, PessoaService>();
-			#endregion
+		//Registro de dependências:
+		#region Application Services
+		//services.AddScoped<IProfissionalService, ProfissionalService>();
+		services.AddScoped<IPessoaService, PessoaService>();
+		#endregion
 
-			#region Data Repositories
-			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-			services.AddScoped<IPessoaRepository, PessoaRepository>();
-			//services.AddScoped<IProfissionalRepository, ProfissionalRepository>();
-			#endregion
+		#region Data Repositories
+		services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+		services.AddScoped<IPessoaRepository, PessoaRepository>();
+		//services.AddScoped<IProfissionalRepository, ProfissionalRepository>();
+		#endregion
 
-			// Adicione outros serviços, handlers, clients, etc.
+		#region CrossCutting
+		services.AddHttpClient<IViaCepService, ViaCepService>();
+		#endregion
 
-			return services;
-		}
+		// outros serviços, handlers, clients, etc.
+
+		return services;
 	}
 }
