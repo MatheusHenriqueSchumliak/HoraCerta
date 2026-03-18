@@ -1,0 +1,76 @@
+﻿@* Partial de sidebar reutilizável (ajustado top padding para alinhar com header) *@
+
+<nav id="appSidebar" class="sidebar d-flex flex-column pt-2 px-3">
+    <div class="d-flex align-items-center mb-2">
+        <button id="sidebarToggle" class="btn btn-sm btn-outline-secondary me-2 d-none d-md-inline-flex" aria-label="Recolher menu" title="Recolher/Expandir menu">
+            <i class="bi bi-list"></i>
+        </button>
+
+        <a class="d-flex align-items-center text-decoration-none flex-grow-1" href="@Url.Action("Index", "Home")">
+            <i class="bi bi-clock-history fs-5 me-2"></i>
+            <span class="fs-6 fw-semibold link-text">HoraCerta</span>
+        </a>
+
+        <button class="btn btn-sm btn-outline-secondary d-md-none ms-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas" aria-label="Abrir menu">
+            <i class="bi bi-list"></i>
+        </button>
+    </div>
+
+    <hr />
+
+    <div class="d-none d-md-block">
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a class="nav-link text-truncate" href="@Url.Action("Lista", "Pessoa")">
+                    <i class="bi bi-people me-2" aria-hidden="true"></i>
+                    <span class="link-text">Pessoas</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-truncate" href="@Url.Action("Criar", "Pessoa")">
+                    <i class="bi bi-person-plus me-2" aria-hidden="true"></i>
+                    <span class="link-text">Nova pessoa</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-truncate" href="#">
+                    <i class="bi bi-gear me-2" aria-hidden="true"></i>
+                    <span class="link-text">Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <hr />
+
+    <div class="mt-auto d-flex align-items-center">
+        <small class="text-muted me-auto">Versão 1.0</small>
+        <button id="themeToggle" class="btn btn-sm btn-outline-secondary" aria-label="Alternar tema" title="Alternar tema">☀️</button>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">HoraCerta</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" href="@Url.Action("Lista", "Pessoa")">
+                        <i class="bi bi-people me-2" aria-hidden="true"></i> Pessoas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" href="@Url.Action("Criar", "Pessoa")">
+                        <i class="bi bi-person-plus me-2" aria-hidden="true"></i> Nova pessoa
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" href="#">
+                        <i class="bi bi-gear me-2" aria-hidden="true"></i> Configurações
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

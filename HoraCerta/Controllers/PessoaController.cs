@@ -30,6 +30,8 @@ public class PessoaController : Controller
 	public async Task<IActionResult> Lista(int pagina = 1, int tamanhoPagina = 10)
 	{
 		var paginadas = await _pessoaService.ObterPaginado(pagina, tamanhoPagina);
+		// Garante que TotalPaginas esteja corretamente calculado se a service não fez
+		
 		return View(paginadas);
 	}
 

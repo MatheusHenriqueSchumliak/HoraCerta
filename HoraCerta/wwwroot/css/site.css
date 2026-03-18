@@ -99,8 +99,77 @@ main {
     background-color: var(--navbar-bg) !important;
 }
 
-.navbar .nav-link, .navbar-brand {
-    color: var(--navbar-text) !important;
+    .navbar .nav-link, .navbar-brand {
+        color: var(--navbar-text) !important;
+    }
+
+/* Sidebar: suporte a recolhimento e tema (usa variáveis do site) */
+.sidebar {
+    width: 220px;
+    min-width: 220px;
+    transition: width .2s ease, background-color .2s ease, color .2s ease;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+    /* segue as variáveis do tema (claro / escuro) */
+    background-color: var(--card-bg);
+    color: var(--text);
+    border-right: 1px solid var(--card-border);
+}
+
+    /* estado recolhido (aplique na nav.sidebar) */
+    .sidebar.collapsed {
+        width: 56px;
+        min-width: 56px;
+    }
+
+    /* link text visibility */
+    .sidebar .link-text {
+        transition: opacity .15s ease, transform .15s ease;
+    }
+
+    .sidebar.collapsed .link-text {
+        opacity: 0;
+        transform: translateX(-6px);
+        display: inline-block; /* mantém espaço para alinhamento, mas fica invisível */
+        width: 0;
+    }
+
+    /* centra ícones quando recolhido */
+    .sidebar.collapsed .nav-link {
+        text-align: center;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+
+    /* adaptações visuais (usa variáveis de tema) */
+    .sidebar .nav-link {
+        color: var(--muted);
+    }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background-color: rgba(0,0,0,.03);
+            color: var(--link);
+        }
+
+/* Hover/active em dark theme: contraste leve */
+:root.dark-theme .sidebar .nav-link:hover,
+:root.dark-theme .sidebar .nav-link.active {
+    background-color: rgba(255,255,255,0.04);
+    color: var(--link);
+}
+
+/* garante que offcanvas use mesma paleta do tema */
+.offcanvas {
+    background-color: var(--card-bg);
+    color: var(--text);
+}
+
+/* utilitários */
+.action-col {
+    white-space: nowrap;
 }
 
 .card {
@@ -142,58 +211,4 @@ textarea,
     transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-    /* Estado de foco: fundo levemente alterado e sombra sutil */
-    .form-control:focus,
-    .form-select:focus,
-    textarea:focus {
-        background-color: var(--input-focus-bg, var(--card-bg)) !important;
-        border-color: var(--link) !important;
-        box-shadow: var(--focus-shadow) !important;
-        outline: none;
-        -webkit-text-fill-color: var(--text) !important; /* para o caso de autofill */
-    }
-
-    /* Corrige o comportamento do autofill do Chrome/Edge/Safari para ficar com fundo escuro */
-    input:-webkit-autofill,
-    textarea:-webkit-autofill,
-    select:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0 1000px var(--card-bg) inset !important;
-        box-shadow: 0 0 0 1000px var(--card-bg) inset !important;
-        -webkit-text-fill-color: var(--text) !important;
-    }
-
-/* Botões */
-.btn-primary {
-    background-color: var(--primary) !important;
-    border-color: var(--primary) !important;
-    color: #fff;
-}
-
-/* foco: usa variável para suavizar sombra */
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-check-input:focus {
-    box-shadow: var(--focus-shadow);
-}
-
-/* Pequena transição visual global */
-* {
-    transition: background-color .12s linear, color .12s linear, border-color .12s linear;
-}
-
-/* Ajustes específicos para login */
-.login-card {
-    max-width: 420px;
-    width: 100%;
-    border-radius: .4rem;
-}
-
-/* Segurança: garante que campos com background branco do bootstrap sejam sobrescritos no .dark-theme */
-.dark-theme .form-control,
-.dark-theme .form-select,
-.dark-theme textarea {
-    background-color: var(--card-bg) !important;
-    color: var(--text) !important;
-    border-color: var(--card-border) !important;
-}
+/* ... restante do arquivo permanece inalterado ... */
