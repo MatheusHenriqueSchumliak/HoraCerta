@@ -33,6 +33,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link text-truncate" href="@Url.Action("Sobre", "Home")">
+                    <i class="bi bi-info-circle me-2" aria-hidden="true"></i>
+                    <span class="link-text">Sobre</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link text-truncate" href="#">
                     <i class="bi bi-gear me-2" aria-hidden="true"></i>
                     <span class="link-text">Configurações</span>
@@ -42,11 +48,6 @@
     </div>
 
     <hr />
-
-    <div class="mt-auto d-flex align-items-center">
-        <small class="text-muted me-auto">Versão 1.0</small>
-        <button id="themeToggle" class="btn btn-sm btn-outline-secondary" aria-label="Alternar tema" title="Alternar tema">☀️</button>
-    </div>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
         <div class="offcanvas-header">
@@ -73,4 +74,5 @@
             </ul>
         </div>
     </div>
+
 </nav>

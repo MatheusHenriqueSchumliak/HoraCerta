@@ -13,4 +13,5 @@ public class PessoaViewModel
 	public DateTime DataCadastro { get; set; }
 	public string Cpf { get; set; } = string.Empty;
 	public EnderecoViewModel Endereco { get; set; } = new EnderecoViewModel();
+	public string? Observacao { get; set; } = null;
 }

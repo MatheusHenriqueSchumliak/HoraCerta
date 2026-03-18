@@ -20,7 +20,12 @@
 
             <!-- Conteúdo principal: ocupa todo em xs, deslocado em md+ -->
             <main class="col-12 col-md-9 col-lg-10 px-4 py-3">
-                @RenderBody()
+                @* Wrapper que centraliza e limita largura do conteúdo *@
+                <div class="d-flex justify-content-center">
+                    <div class="w-100 px-4" style="max-width: 1100px;">
+                        @RenderBody()
+                    </div>
+                </div>
             </main>
         </div>
     </div>

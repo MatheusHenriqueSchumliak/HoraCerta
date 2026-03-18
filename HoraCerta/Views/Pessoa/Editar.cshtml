@@ -1,28 +1,25 @@
 ﻿@model HoraCerta.Application.ViewModels.Pessoa.PessoaViewModel
 
 @{
-    ViewData["Title"] = "Criar Pessoa";
+    ViewData["Title"] = "Editar Pessoa";
 }
 
-<h1>Criar Pessoa</h1>
+<h1>Editar Pessoa</h1>
 
-<form asp-action="Criar" method="post" class="row g-3">
+<form asp-action="Editar" method="post" class="row g-3">
     @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     @await Html.PartialAsync("_Formulario", Model)
 
     @{
-        ViewData["CancelAction"] = "Lista";
+        ViewData["CancelAction"] = "Exibir"; ViewData["CancelRouteId"] = Model.Id;
     }
     @await Html.PartialAsync("_FormButtons", Model)
-
 </form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-    <validation-summary />
-
-    <!-- Remova a função inline e inclua o script externo -->
     <script src="~/js/Pessoa/Criar.js" asp-append-version="true"></script>
 }

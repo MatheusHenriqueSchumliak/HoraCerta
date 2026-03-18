@@ -1,0 +1,20 @@
+﻿@model HoraCerta.Application.ViewModels.Pessoa.PessoaViewModel?
+
+@{
+    // Valores padrão; podem ser sobrescritos pela view chamadora via ViewData
+    var cancelAction = ViewData["CancelAction"] as string ?? "Lista";
+    var cancelRouteId = ViewData["CancelRouteId"];
+}
+
+<div class="col-12 mt-3">
+    <button type="submit" class="btn btn-outline-success">Salvar</button>
+
+    @if (cancelRouteId != null)
+    {
+        <a asp-action="@cancelAction" asp-route-id="@(cancelRouteId)" class="btn btn-outline-secondary ms-2">Voltar</a>
+    }
+    else
+    {
+        <a asp-action="@cancelAction" class="btn btn-outline-secondary ms-2">Voltar</a>
+    }
+</div>
