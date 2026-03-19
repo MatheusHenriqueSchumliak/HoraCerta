@@ -11,6 +11,7 @@ public static class PessoaFactory
 	{
 		return new PessoaViewModel
 		{
+			Id = pessoa.Id,
 			Nome = pessoa.Nome,
 			SobreNome = pessoa.SobreNome,
 			Telefone = pessoa.Telefone,
@@ -47,6 +48,7 @@ public static class PessoaFactory
 			Cpf = model.Cpf,
 			Endereco = new Endereco
 			{
+				PessoaId = model.Id,
 				CEP = model.Endereco.CEP,
 				Rua = model.Endereco.Rua,
 				Numero = model.Endereco.Numero,

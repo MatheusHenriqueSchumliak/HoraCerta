@@ -9,7 +9,11 @@ namespace HoraCerta.Infrastructure.Context
 	{
 		public DbSet<Pessoa> Pessoas { get; set; }
 		public DbSet<Endereco> Enderecos { get; set; }
-
+		public DbSet<Prestador> Prestadores { get; set; }
+		public DbSet<Servico> Servicos { get; set; }
+		public DbSet<Atendimento> Atendimentos { get; set; }
+		public DbSet<HorarioAtendimento> HorariosAtendimentos { get; set; }
+		public DbSet<Especialidade> Especialidades { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
@@ -30,6 +34,11 @@ namespace HoraCerta.Infrastructure.Context
 
 			modelBuilder.ApplyConfiguration(new PessoaMapping());
 			modelBuilder.ApplyConfiguration(new EnderecoMapping());
+			modelBuilder.ApplyConfiguration(new PrestadorMapping());
+			modelBuilder.ApplyConfiguration(new ServicoMapping());
+			modelBuilder.ApplyConfiguration(new AtendimentoMapping());
+			modelBuilder.ApplyConfiguration(new HorarioAtendimentoMapping());
+			modelBuilder.ApplyConfiguration(new EspecialidadeMapping());
 		}
 	}
 }
