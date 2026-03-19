@@ -10,9 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Application", "02 - Application", "{F8BC5B18-3A9D-4496-BF0D-49D46CF3279B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Domain", "03 - Domain", "{369CB01D-A1A7-72D2-AABC-3F0945D148A2}"
-	ProjectSection(SolutionItems) = preProject
-		..\HoraCerta.Application\ViewModels\Pessoa\PessoaViewModel.cs = ..\HoraCerta.Application\ViewModels\Pessoa\PessoaViewModel.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Infrastructure", "04 - Infrastructure", "{62D68EB9-E7E2-4478-8B46-FC974258E4F7}"
 EndProject
