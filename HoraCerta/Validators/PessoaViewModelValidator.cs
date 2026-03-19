@@ -1,5 +1,6 @@
-﻿using FluentValidation;
-using HoraCerta.Application.ViewModels.Pessoa;
+﻿using HoraCerta.Application.ViewModels.Pessoa;
+using System.Text.RegularExpressions;
+using FluentValidation;
 
 namespace HoraCerta.Application.Validators;
 
@@ -22,7 +23,12 @@ public class PessoaViewModelValidator : AbstractValidator<PessoaViewModel>
 		RuleFor(p => p.Cpf)
 			.NotEmpty()
 			.WithMessage("O CPF é obrigatório.")
-			.Length(11)
+			.Must(cpf =>
+			{
+				if (string.IsNullOrWhiteSpace(cpf)) return false;
+				var apenasDigitos = Regex.Replace(cpf, @"\D", "");
+				return apenasDigitos.Length == 11;
+			})
 			.WithMessage("O CPF deve ter exatamente 11 caracteres.");
 
 		RuleFor(p => p.Celular)

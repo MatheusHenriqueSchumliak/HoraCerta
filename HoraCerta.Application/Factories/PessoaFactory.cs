@@ -48,6 +48,7 @@ public static class PessoaFactory
 			Cpf = model.Cpf,
 			Endereco = new Endereco
 			{
+				PessoaId = model.Id,
 				CEP = model.Endereco.CEP,
 				Rua = model.Endereco.Rua,
 				Numero = model.Endereco.Numero,

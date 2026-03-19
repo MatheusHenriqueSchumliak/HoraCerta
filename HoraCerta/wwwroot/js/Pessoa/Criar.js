@@ -101,3 +101,81 @@ function initControladorCep(prefixo = 'Endereco') {
 
 // inicializa padrão (prefixo 'Endereco')
 initControladorCep();
+
+// Máscaras em tempo real: telefone/whats ( (99) 9 9999-9999 ) e CPF (999.999.999-99)
+(function () {
+    'use strict';
+
+    function onlyDigits(str) {
+        return (str || '').replace(/\D/g, '');
+    }
+
+    function maskPhone(value) {
+        const d = onlyDigits(value).slice(0, 11); // até 11 dígitos
+        if (!d) return '';
+        if (d.length <= 2) return '(' + d;
+        const dArea = d.slice(0, 2);
+        const rest = d.slice(2);
+        let out = '(' + dArea + ') ';
+        if (rest.length === 0) return out;
+        out += rest[0]; // primeiro dígito (o '9' em celulares)
+        if (rest.length === 1) return out;
+        const part = rest.slice(1);
+        if (part.length <= 4) return out + ' ' + part;
+        return out + ' ' + part.slice(0, 4) + '-' + part.slice(4);
+    }
+
+    function maskCPF(value) {
+        const d = onlyDigits(value).slice(0, 11);
+        if (!d) return '';
+        let s = d;
+        s = s.replace(/^(\d{3})(\d)/, '$1.$2');
+        s = s.replace(/^(\d{3}\.\d{3})(\d)/, '$1.$2');
+        s = s.replace(/^(\d{3}\.\d{3}\.\d{3})(\d)/, '$1-$2');
+        return s;
+    }
+
+    function applyMaskToInput(input) {
+        const maskType = input.dataset.mask;
+        if (!maskType) return;
+
+        function listener(e) {
+            const selectionStart = input.selectionStart;
+            const oldLen = input.value.length;
+            const before = input.value;
+            let newValue = '';
+            if (maskType === 'phone') newValue = maskPhone(input.value);
+            else if (maskType === 'cpf') newValue = maskCPF(input.value);
+            input.value = newValue;
+
+            // tenta manter o caret em posição aproximada
+            const newLen = newValue.length;
+            const delta = newLen - oldLen;
+            try {
+                input.setSelectionRange(Math.max(0, selectionStart + delta), Math.max(0, selectionStart + delta));
+            } catch (err) { /* alguns navegadores podem falhar */ }
+        }
+
+        input.addEventListener('input', listener, { passive: true });
+        input.addEventListener('paste', function (ev) {
+            // aplicar máscara após o paste
+            setTimeout(function () { listener(); }, 0);
+        });
+        // inicializa valor formatado se já houver conteúdo
+        if (input.value) {
+            if (maskType === 'phone') input.value = maskPhone(input.value);
+            if (maskType === 'cpf') input.value = maskCPF(input.value);
+        }
+    }
+
+    function init() {
+        var elsPhone = document.querySelectorAll('input[data-mask="phone"]');
+        var elsCpf = document.querySelectorAll('input[data-mask="cpf"]');
+        elsPhone.forEach(applyMaskToInput);
+        elsCpf.forEach(applyMaskToInput);
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
+
+})();

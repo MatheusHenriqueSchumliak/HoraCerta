@@ -7,18 +7,18 @@
     <span asp-validation-for="Nome" class="text-danger"></span>
 </div>
 <div class="col-md-6">
-    <label asp-for="SobreNome" class="form-label"></label>
+    <label asp-for="SobreNome" class="form-label">Sobrenome</label>
     <input asp-for="SobreNome" class="form-control" />
     <span asp-validation-for="SobreNome" class="text-danger"></span>
 </div>
 <div class="col-md-6">
     <label asp-for="Telefone" class="form-label"></label>
-    <input asp-for="Telefone" class="form-control" />
+    <input asp-for="Telefone" class="form-control mask-phone" data-mask="phone" />
     <span asp-validation-for="Telefone" class="text-danger"></span>
 </div>
 <div class="col-md-6">
     <label asp-for="Celular" class="form-label"></label>
-    <input asp-for="Celular" class="form-control" />
+    <input asp-for="Celular" class="form-control mask-phone" data-mask="phone" />
     <span asp-validation-for="Celular" class="text-danger"></span>
 </div>
 <div class="col-md-4">
@@ -28,7 +28,7 @@
 </div>
 <div class="col-md-4">
     <label asp-for="Cpf" class="form-label"></label>
-    <input asp-for="Cpf" class="form-control" />
+    <input asp-for="Cpf" class="form-control mask-cpf" data-mask="cpf" />
     <span asp-validation-for="Cpf" class="text-danger"></span>
 </div>
 
