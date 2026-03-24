@@ -16,48 +16,50 @@
 }
 else
 {
-    <table class="table table-bordered table-striped table-responsive">
-        <colgroup>
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-            <col style="width:1%;" /> <!-- coluna de ações com largura mínima -->
-        </colgroup>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col style="width:1%;" /> <!-- coluna de ações com largura mínima -->
+            </colgroup>
 
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Sobrenome</th>
-                <th>CPF</th>
-                <th>Celular</th>
-                <th>Data Cadastro</th>
-                <th class="text-center">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var pessoa in Model.Items)
-            {
-                var tz = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
-                var dataCadastro = TimeZoneInfo.ConvertTimeFromUtc(pessoa.DataCadastro, tz);
+            <thead>
                 <tr>
-                    <td>@pessoa.Nome</td>
-                    <td>@pessoa.SobreNome</td>
-                    <td>@pessoa.Cpf</td>
-                    <td>@pessoa.Celular</td>
-                    <td>@dataCadastro</td>
-                    <td class="action-col text-center align-middle">
-                        <div class="btn-group" role="group" aria-label="Ações">
-                            <a asp-action="Editar" asp-route-id="@pessoa.Id" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil" aria-hidden="true"></i></a>
-                            <a asp-action="Exibir" asp-controller="Pessoa" asp-route-id="@pessoa.Id" class="btn btn-sm btn-outline-info"><i class="bi bi-eye" aria-hidden="true"></i></a>
-                            <a asp-action="Excluir" asp-route-id="@pessoa.Id" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash" aria-hidden="true"></i></a>
-                        </div>
-                    </td>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>CPF</th>
+                    <th>Celular</th>
+                    <th>Data Cadastro</th>
+                    <th class="text-center">Ações</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var pessoa in Model.Items)
+                {
+                    var tz = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+                    var dataCadastro = TimeZoneInfo.ConvertTimeFromUtc(pessoa.DataCadastro, tz);
+                    <tr>
+                        <td>@pessoa.Nome</td>
+                        <td>@pessoa.SobreNome</td>
+                        <td>@pessoa.Cpf</td>
+                        <td>@pessoa.Celular</td>
+                        <td>@dataCadastro</td>
+                        <td class="action-col text-center align-middle">
+                            <div class="btn-group" role="group" aria-label="Ações">
+                                <a asp-action="Editar" asp-route-id="@pessoa.Id" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                                <a asp-action="Exibir" asp-controller="Pessoa" asp-route-id="@pessoa.Id" class="btn btn-sm btn-outline-info"><i class="bi bi-eye" aria-hidden="true"></i></a>
+                                <a asp-action="Excluir" asp-route-id="@pessoa.Id" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash" aria-hidden="true"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
 
 @* Debug rápido para confirmar valores de paginação *@

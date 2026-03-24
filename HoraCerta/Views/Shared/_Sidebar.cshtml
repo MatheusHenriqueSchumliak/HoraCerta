@@ -1,6 +1,6 @@
 ﻿@* Partial de sidebar reutilizável (ajustado top padding para alinhar com header) *@
 
-<nav id="appSidebar" class="sidebar d-flex flex-column pt-2 px-3">
+<nav id="appSidebar" class="sidebar d-flex flex-column pt-2 px-3 d-none d-md-flex">
     <div class="d-flex align-items-center mb-2">
         <button id="sidebarToggle" class="btn btn-sm btn-outline-secondary ms-1 d-none d-md-inline-flex" aria-label="Recolher menu" title="Recolher/Expandir menu">
             <i id="sidebarToggleIcon" class="bi bi-chevron-left"></i>
@@ -45,34 +45,6 @@
                 </a>
             </li>
         </ul>
-    </div>
-
-    <hr />
-
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">HoraCerta</h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-truncate" href="@Url.Action("Lista", "Pessoa")">
-                        <i class="bi bi-people me-2" aria-hidden="true"></i> Pessoas
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-truncate" href="@Url.Action("Criar", "Pessoa")">
-                        <i class="bi bi-person-plus me-2" aria-hidden="true"></i> Nova pessoa
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-truncate" href="#">
-                        <i class="bi bi-gear me-2" aria-hidden="true"></i> Configurações
-                    </a>
-                </li>
-            </ul>
-        </div>
     </div>
 
 </nav>
