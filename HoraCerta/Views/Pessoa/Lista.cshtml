@@ -17,7 +17,7 @@
 else
 {
     <div class="table-responsive">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped table-hover">
             <colgroup>
                 <col />
                 <col />
@@ -28,7 +28,7 @@ else
             </colgroup>
 
             <thead>
-                <tr>
+                <tr class="bg-secondary">
                     <th>Nome</th>
                     <th>Sobrenome</th>
                     <th>CPF</th>
@@ -45,8 +45,8 @@ else
                     <tr>
                         <td>@pessoa.Nome</td>
                         <td>@pessoa.SobreNome</td>
-                        <td>@pessoa.Cpf</td>
-                        <td>@pessoa.Celular</td>
+                        <td>@pessoa.CpfFormatado</td>
+                        <td>@pessoa.CelularFormatado</td>
                         <td>@dataCadastro</td>
                         <td class="action-col text-center align-middle">
                             <div class="btn-group" role="group" aria-label="Ações">
