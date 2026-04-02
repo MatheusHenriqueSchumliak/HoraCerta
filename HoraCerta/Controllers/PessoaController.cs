@@ -50,7 +50,22 @@ public class PessoaController(IPessoaService pessoaService, IViaCepService viaCe
 	public async Task<IActionResult> Criar(PessoaViewModel model)
 	{
 		if (!ModelState.IsValid) return View(model);
-		await _pessoaService.Criar(model);
+
+		var resultado = await _pessoaService.Criar(model);
+
+		if (!resultado.Sucesso)
+		{
+			foreach (var erro in resultado.Erros)
+			{
+				ModelState.AddModelError(string.Empty, erro);
+			}
+			// Junta todos os erros em uma string separada por quebra de linha
+			TempData["AlertaErro"] = string.Join("<br/>", resultado.Erros);
+
+			return View(model);
+		}
+
+		TempData["AlertaSucesso"] = resultado.Mensagem ?? "Cadastro realizado!";
 		return RedirectToAction(nameof(Lista));
 	}
 

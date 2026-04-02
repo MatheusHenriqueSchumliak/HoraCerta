@@ -115,3 +115,37 @@ textarea,
     border-color: var(--card-border) !important;
     transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
+
+html.dark-theme .swal2-popup
+{
+    background: #3d3d3d !important; /* var(--card-bg) */
+    color: #ececec !important; /* var(--text) */
+    box-shadow: 0 0 32px 0 rgba(0,0,0,0.7) !important;
+}
+
+html.dark-theme .swal2-title,
+html.dark-theme .swal2-html-container,
+html.dark-theme .swal2-content
+{
+    color: #ececec !important; /* var(--text) */
+}
+
+html.dark-theme .swal2-confirm,
+html.dark-theme .swal2-cancel
+{
+    background: #8ab4f8 !important; /* var(--primary) */
+    color: #fff !important;
+    border: none !important;
+}
+
+html.dark-theme .swal2-styled.swal2-cancel
+{
+    background: #a8a8a8 !important; /* var(--muted) */
+    color: #fff !important;
+}
+
+html.dark-theme .swal2-icon
+{
+    color: #8ab4f8 !important; /* var(--link) */
+    border-color: #8ab4f8 !important; /* var(--link) */
+}

@@ -1,20 +1,16 @@
 ﻿using HoraCerta.Application.Interfaces.IRepository;
 using HoraCerta.Application.Interfaces.IServices;
+using HoraCerta.Application.ViewModels.Common;
 using HoraCerta.Application.ViewModels.Pessoa;
 using HoraCerta.Application.Factorys;
 using HoraCerta.Domain.Entities.Base;
+using System.Text.RegularExpressions;
 
 namespace HoraCerta.Application.Services;
-
-public class PessoaService : IPessoaService
+public class PessoaService(IPessoaRepository pessoaRepository) : IPessoaService
 {
 	#region Construtor
-	private readonly IPessoaRepository _pessoaRepository;
-
-	public PessoaService(IPessoaRepository pessoaRepository)
-	{
-		_pessoaRepository = pessoaRepository;
-	}
+	private readonly IPessoaRepository _pessoaRepository = pessoaRepository;
 	#endregion Construtor
 
 	#region C.R.U.D.
@@ -30,15 +26,22 @@ public class PessoaService : IPessoaService
 		return pessoa is null ? null : PessoaFactory.ParaViewModel(pessoa);
 	}
 
-	public async Task<Guid> Criar(PessoaViewModel model)
+	public async Task<ResultadoOperacao> Criar(PessoaViewModel model)
 	{
+		// Limpa o CPF para conter apenas números
+		model.Cpf = Regex.Replace(model.Cpf ?? "", @"\D", "");
+
+		var existente = await _pessoaRepository.ObterPorCpf(model.Cpf);
+		if (existente != null)
+			return ResultadoOperacao.Falha("CPF já cadastrado.");
+
 		// Cria entidade a partir do ViewModel usando a factory
 		var pessoa = PessoaFactory.Criar(model);
 
 		await _pessoaRepository.Adicionar(pessoa).ConfigureAwait(false);
 		await _pessoaRepository.Salvar().ConfigureAwait(false);
 
-		return pessoa.Id;
+		return ResultadoOperacao.Ok("Pessoa cadastrada com sucesso!");
 	}
 
 	public async Task Atualizar(Guid id, PessoaViewModel model)
