@@ -17,11 +17,13 @@ public static class ServiceCollectionExtensions
 		#region Application Services
 		//services.AddScoped<IProfissionalService, ProfissionalService>();
 		services.AddScoped<IPessoaService, PessoaService>();
+		services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 		#endregion
 
 		#region Data Repositories
 		services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 		services.AddScoped<IPessoaRepository, PessoaRepository>();
+		services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
 		//services.AddScoped<IProfissionalRepository, ProfissionalRepository>();
 		#endregion
 

@@ -1,0 +1,70 @@
+﻿@model HoraCerta.Domain.Entities.Base.ListaPaginada<HoraCerta.Application.ViewModels.Especialidade.EspecialidadeViewModel>
+@using HoraCerta.Application.ViewModels.Common
+
+@{
+    ViewData["Title"] = "Especialidades";
+}
+
+<h1>Especialidades</h1>
+<a asp-action="Criar" class="btn btn-outline-primary mb-2">Nova Especialidade</a>
+
+@if (Model.Items == null || !Model.Items.Any())
+{
+    <div class="alert alert-warning" role="alert">
+        Nenhuma especialidade cadastrada.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <colgroup>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col />
+                <col style="width:1%;" /> <!-- coluna de ações com largura mínima -->
+            </colgroup>
+
+            <thead>
+                <tr class="bg-secondary">
+                    <th>Nome</th>
+                    <th>Descricao</th>
+                    <th>Data Cadastro</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var especialidade in Model.Items)
+                {
+                    var tz = TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time");
+                    var dataCadastro = TimeZoneInfo.ConvertTimeFromUtc(especialidade.DataCriacao, tz);
+                    <tr>
+                        <td>@especialidade.Nome</td>
+                        <td>@especialidade.Descricao</td>
+                        <td>@dataCadastro</td>
+                        <td class="action-col text-center align-middle">
+                            <div class="btn-group" role="group" aria-label="Ações">
+                                <a asp-action="Editar" asp-route-id="@especialidade.Id" class="btn btn-sm btn-outline-warning"><i class="bi bi-pencil" aria-hidden="true"></i></a>
+                                <a asp-action="Exibir" asp-controller="Especialidade" asp-route-id="@especialidade.Id" class="btn btn-sm btn-outline-info"><i class="bi bi-eye" aria-hidden="true"></i></a>
+                                <a asp-action="Excluir" asp-route-id="@especialidade.Id" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash" aria-hidden="true"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@* Debug rápido para confirmar valores de paginação *@
+<div class="mb-2">Página atual: @Model.NumeroPagina — Total páginas: @Model.TotalPaginas</div>
+
+@await Html.PartialAsync("_Paginador", new PaginadorViewModel {
+PageNumber = Model.NumeroPagina,
+    TotalPages = Model.TotalPaginas,
+    Action = "Lista",
+    Controller = "Especialidade",
+    PageParameterName = "page"
+})
