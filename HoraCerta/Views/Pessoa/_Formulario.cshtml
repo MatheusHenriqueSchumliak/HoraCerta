@@ -31,7 +31,16 @@
     <input asp-for="Cpf" class="form-control mask-cpf" data-mask="cpf" />
     <span asp-validation-for="Cpf" class="text-danger"></span>
 </div>
-
+<div class="col-md-4">
+    <label class="form-label">Tipo de Pessoa</label>
+    <div>
+        <input type="radio" asp-for="EhProfissional" value="false" id="clienteRadio" class="form-check-input" checked="@(Model.EhProfissional == false)" />
+        <label for="clienteRadio" class="form-check-label me-3">Cliente</label>
+        <input type="radio" asp-for="EhProfissional" value="true" id="profissionalRadio" class="form-check-input" checked="@(Model.EhProfissional == true)" />
+        <label for="profissionalRadio" class="form-check-label">Profissional</label>
+    </div>
+    <span asp-validation-for="EhProfissional" class="text-danger"></span>
+</div>
 <h4 class="mt-4">Endereço</h4>
 <div class="col-md-4">
     <label asp-for="Endereco.CEP" class="form-label"></label>

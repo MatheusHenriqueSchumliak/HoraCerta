@@ -15,6 +15,7 @@ public class PessoaViewModel
 	public string Cpf { get; set; } = string.Empty;
 	public EnderecoViewModel Endereco { get; set; } = new EnderecoViewModel();
 	public string? Observacao { get; set; } = null;
+	public bool EhProfissional { get; set; } = false;
 
 	public string CpfFormatado
 	{

@@ -7,6 +7,7 @@ using HoraCerta.Domain.Entities.Base;
 using System.Text.RegularExpressions;
 
 namespace HoraCerta.Application.Services;
+
 public class PessoaService(IPessoaRepository pessoaRepository) : IPessoaService
 {
 	#region Construtor
@@ -31,6 +32,10 @@ public class PessoaService(IPessoaRepository pessoaRepository) : IPessoaService
 		// Limpa o CPF para conter apenas números
 		model.Cpf = Regex.Replace(model.Cpf ?? "", @"\D", "");
 
+		// Limpa Telefone e Celular para conter apenas números
+		model.Telefone = string.IsNullOrWhiteSpace(model.Telefone) ? null : Regex.Replace(model.Telefone, @"\D", "");
+		model.Celular = Regex.Replace(model.Celular ?? "", @"\D", "");
+
 		var existente = await _pessoaRepository.ObterPorCpf(model.Cpf);
 		if (existente != null)
 			return ResultadoOperacao.Falha("CPF já cadastrado.");
@@ -49,6 +54,13 @@ public class PessoaService(IPessoaRepository pessoaRepository) : IPessoaService
 		// Busca a entidade existente
 		var existente = await _pessoaRepository.ObterPorId(id).ConfigureAwait(false);
 		if (existente is null) throw new InvalidOperationException("Pessoa não encontrada.");
+
+		// Limpa o CPF para conter apenas números
+		model.Cpf = Regex.Replace(model.Cpf ?? "", @"\D", "");
+
+		// Limpa Telefone e Celular para conter apenas números
+		model.Telefone = string.IsNullOrWhiteSpace(model.Telefone) ? null : Regex.Replace(model.Telefone, @"\D", "");
+		model.Celular = Regex.Replace(model.Celular ?? "", @"\D", "");
 
 		// Atualiza a entidade existente usando a factory
 		PessoaFactory.Atualizar(existente, model);

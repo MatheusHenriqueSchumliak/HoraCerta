@@ -1,4 +1,5 @@
 ﻿using HoraCerta.Application.Interfaces.IServices;
+using HoraCerta.Application.ViewModels.Endereco;
 using HoraCerta.Application.ViewModels.Pessoa;
 using HoraCerta.CrossCutting.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -41,7 +42,30 @@ public class PessoaController(IPessoaService pessoaService, IViaCepService viaCe
 	// GET: Pessoas/Create
 	public IActionResult Criar()
 	{
-		return View();
+		var model = new PessoaViewModel
+		{
+			Nome = string.Empty,
+			SobreNome = string.Empty,
+			Telefone = string.Empty,
+			Celular = string.Empty,
+			DataNascimento = DateTime.Today,
+			DataCadastro = DateTime.Now,
+			Cpf = string.Empty,
+			Observacao = string.Empty,
+			EhProfissional = false,
+			Endereco = new EnderecoViewModel
+			{
+				CEP = string.Empty,
+				Rua = string.Empty,
+				Numero = string.Empty,
+				Bairro = string.Empty,
+				Cidade = string.Empty,
+				Estado = string.Empty,
+				Complemento = string.Empty
+			}
+		};
+
+		return View(model);
 	}
 
 	// POST: Pessoas/Create
@@ -84,7 +108,7 @@ public class PessoaController(IPessoaService pessoaService, IViaCepService viaCe
 	{
 		if (!ModelState.IsValid) return View(model);
 		await _pessoaService.Atualizar(id, model);
-		return RedirectToAction(nameof(Index));
+		return RedirectToAction(nameof(Exibir), new { id = id });
 	}
 
 	//// GET: Pessoas/Delete/5

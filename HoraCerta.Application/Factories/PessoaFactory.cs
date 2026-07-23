@@ -1,6 +1,7 @@
 ﻿using HoraCerta.Application.ViewModels.Endereco;
 using HoraCerta.Application.ViewModels.Pessoa;
 using HoraCerta.Domain.Entities;
+using HoraCerta.Domain.Enumerables;
 
 namespace HoraCerta.Application.Factorys;
 
@@ -29,6 +30,7 @@ public static class PessoaFactory
 				Complemento = pessoa.Endereco?.Complemento
 			},
 			DataCadastro = pessoa.DataCriacao,
+			Observacao = pessoa.Observacao,
 		};
 	}
 
@@ -37,45 +39,64 @@ public static class PessoaFactory
 	#region ViewModel para entidade
 	public static Pessoa Criar(PessoaViewModel model)
 	{
-		return new Pessoa
-		{
-			Id = model.Id == Guid.Empty ? Guid.NewGuid() : model.Id,
-			Nome = model.Nome,
-			SobreNome = model.SobreNome,
-			Telefone = model.Telefone,
-			Celular = model.Celular,
-			DataNascimento = model.DataNascimento,
-			Cpf = model.Cpf,
-			Endereco = new Endereco
-			{
-				PessoaId = model.Id,
-				CEP = model.Endereco.CEP,
-				Rua = model.Endereco.Rua,
-				Numero = model.Endereco.Numero,
-				Bairro = model.Endereco.Bairro,
-				Cidade = model.Endereco.Cidade,
-				Estado = model.Endereco.Estado,
-				Complemento = model.Endereco.Complemento
-			}
-		};
+		var pessoaId = model.Id == Guid.Empty ? Guid.NewGuid() : model.Id;
+
+		var endereco = new Endereco().Criar(
+			pessoaId: pessoaId,
+			cep: model.Endereco.CEP,
+			rua: model.Endereco.Rua,
+			numero: model.Endereco.Numero,
+			bairro: model.Endereco.Bairro,
+			cidade: model.Endereco.Cidade,
+			estado: model.Endereco.Estado,
+			complemento: model.Endereco.Complemento
+		);
+
+		var pessoa = new Pessoa().Criar(
+			nome: model.Nome,
+			sobreNome: model.SobreNome,
+			telefone: model.Telefone,
+			celular: model.Celular,
+			dataNascimento: model.DataNascimento,
+			cpf: model.Cpf,
+			observacao: model.Observacao ?? string.Empty,
+			endereco: endereco,
+			status: StatusCadastro.Ativo
+		);
+
+		pessoa.Id = pessoaId;
+
+		return pessoa;
 	}
 
-	public static Pessoa Atualizar(Pessoa existente, PessoaViewModel model)
+	public static void Atualizar(Pessoa existente, PessoaViewModel model)
 	{
-		return new Pessoa
+		// Usa o método de domínio da entidade Pessoa
+		existente.Atualizar(
+			nome: model.Nome,
+			sobreNome: model.SobreNome,
+			telefone: model.Telefone,
+			celular: model.Celular,
+			dataNascimento: model.DataNascimento,
+			cpf: model.Cpf,
+			observacao: model.Observacao ?? string.Empty,
+			status: existente.Status
+
+		);
+
+		// Usa o método de domínio da entidade Endereco
+		if (existente.Endereco != null)
 		{
-			Id = existente.Id,
-			Nome = model.Nome,
-			SobreNome = model.SobreNome,
-			Telefone = model.Telefone,
-			Celular = model.Celular,
-			DataNascimento = model.DataNascimento,
-			Cpf = model.Cpf,
-			Endereco = existente.Endereco,
-			DataCriacao = existente.DataCriacao,
-			DataAtualizacao = DateTime.UtcNow,
-			Status = existente.Status
-		};
+			existente.Endereco.Atualizar(
+				cep: model.Endereco.CEP,
+				rua: model.Endereco.Rua,
+				numero: model.Endereco.Numero,
+				bairro: model.Endereco.Bairro,
+				cidade: model.Endereco.Cidade,
+				estado: model.Endereco.Estado,
+				complemento: model.Endereco.Complemento
+			);
+		}
 
 	}
 

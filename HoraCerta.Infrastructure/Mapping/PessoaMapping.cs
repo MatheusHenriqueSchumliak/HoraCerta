@@ -24,6 +24,8 @@ public class PessoaMapping : IEntityTypeConfiguration<Pessoa>
 
 		builder.Property(p => p.DataNascimento).IsRequired();
 
+		builder.Property(p => p.Observacao).HasMaxLength(500);
+
 		builder.Property(p => p.Status).HasConversion<string>().HasMaxLength(50).IsRequired();
 
 		//relação 1:1 — Pessoa é o principal, Endereco é dependente
