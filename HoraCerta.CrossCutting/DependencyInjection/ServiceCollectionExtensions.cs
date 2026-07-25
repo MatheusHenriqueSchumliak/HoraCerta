@@ -14,15 +14,15 @@ public static class ServiceCollectionExtensions
 	public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
 	{
 		//Registro de dependências:
-		#region Application Services
-		//services.AddScoped<IProfissionalService, ProfissionalService>();
+		#region Application Services		
 		services.AddScoped<IPessoaService, PessoaService>();
+		services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 		#endregion
 
 		#region Data Repositories
 		services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 		services.AddScoped<IPessoaRepository, PessoaRepository>();
-		//services.AddScoped<IProfissionalRepository, ProfissionalRepository>();
+		services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
 		#endregion
 
 		#region CrossCutting

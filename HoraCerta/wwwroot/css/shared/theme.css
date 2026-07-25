@@ -1,0 +1,151 @@
+﻿/* ===========================
+   VARIÁVEIS E REGRAS DE TEMA
+   =========================== */
+
+/* Variáveis de tema claro */
+:root
+{
+    --bg: #ffffff;
+    --text: #212529;
+    --muted: #6c757d;
+    --card-bg: #ffffff;
+    --card-border: rgba(0,0,0,0.08);
+    --navbar-bg: #ffffff;
+    --navbar-text: #212529;
+    --link: #0d6efd;
+    --footer-bg: #f8f9fa;
+    --primary: #0b63d4;
+    --focus-shadow: 0 0 0 0.08rem rgba(37,140,251,0.12);
+    --transition-fast: 0.12s linear;
+}
+
+/* Variáveis de tema escuro */
+.dark-theme
+{
+    --bg: #2f2f2f;
+    --text: #ececec;
+    --muted: #a8a8a8;
+    --card-bg: #3d3d3d;
+    --card-border: rgba(255,255,255,0.06);
+    --navbar-bg: #2f2f2f;
+    --navbar-text: #ececec;
+    --link: #8ab4f8;
+    --footer-bg: #2a2a2a;
+    --primary: #8ab4f8;
+    --focus-shadow: 0 0 0 0.2rem rgba(138, 180, 248, 0.25);
+    --input-focus-bg: #424242;
+}
+
+/* Reset e aplicação das variáveis */
+html, body
+{
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color .18s ease, color .18s ease;
+}
+
+/* Navbar usa variáveis de tema */
+.navbar, .navbar-light, .navbar-dark
+{
+    background-color: var(--navbar-bg) !important;
+}
+
+.navbar .nav-link, .navbar-brand
+{
+    color: var(--navbar-text) !important;
+}
+
+/* Hover/active em dark theme: contraste leve */
+:root.dark-theme .sidebar .nav-link:hover,
+:root.dark-theme .sidebar .nav-link.active
+{
+    background-color: rgba(255,255,255,0.04);
+    color: var(--link);
+}
+
+/* Offcanvas usa variáveis de tema */
+.offcanvas
+{
+    background-color: var(--card-bg);
+    color: var(--text);
+}
+
+/* Card usa variáveis de tema */
+.card
+{
+    background-color: var(--card-bg);
+    border-color: var(--card-border);
+    color: var(--text);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* Footer usa variáveis de tema */
+.footer, footer, .border-top.footer
+{
+    background-color: var(--footer-bg);
+    color: var(--muted);
+}
+
+/* Links */
+a
+{
+    color: var(--link);
+}
+
+a:hover
+{
+    color: var(--link);
+    opacity: 0.8;
+}
+
+/* Tabela */
+.table
+{
+    color: var(--text);
+}
+
+/* Inputs, selects, textarea */
+.form-control,
+.form-select,
+textarea,
+.select
+{
+    background-color: var(--card-bg) !important;
+    color: var(--text) !important;
+    border-color: var(--card-border) !important;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+html.dark-theme .swal2-popup
+{
+    background: #3d3d3d !important; /* var(--card-bg) */
+    color: #ececec !important; /* var(--text) */
+    box-shadow: 0 0 32px 0 rgba(0,0,0,0.7) !important;
+}
+
+html.dark-theme .swal2-title,
+html.dark-theme .swal2-html-container,
+html.dark-theme .swal2-content
+{
+    color: #ececec !important; /* var(--text) */
+}
+
+html.dark-theme .swal2-confirm,
+html.dark-theme .swal2-cancel
+{
+    background: #8ab4f8 !important; /* var(--primary) */
+    color: #fff !important;
+    border: none !important;
+}
+
+html.dark-theme .swal2-styled.swal2-cancel
+{
+    background: #a8a8a8 !important; /* var(--muted) */
+    color: #fff !important;
+}
+
+html.dark-theme .swal2-icon
+{
+    color: #8ab4f8 !important; /* var(--link) */
+    border-color: #8ab4f8 !important; /* var(--link) */
+}

@@ -20,120 +20,127 @@
                     <h4 class="mb-1">
                         @Model?.Nome @if(!string.IsNullOrWhiteSpace(Model?.SobreNome)){
                         @Model.SobreNome
-                                                }
-                    </h4>
-                    <p class="mb-1 text-muted">@Model?.Telefone</p>
+                    }
+                </h4>
+                <p class="mb-1 text-muted">@Model?.Telefone</p>
 
-                    <div class="d-flex gap-2 mt-3">
-                        <a asp-action="Editar" asp-route-id="@Model?.Id" class="btn btn-outline-warning btn-sm" title="Editar">
-                            <i class="bi bi-pencil"></i>
-                        </a>
-                        <a asp-action="Exibir" asp-route-id="@Model?.Id" class="btn btn-outline-info btn-sm d-none" title="Visualizar (atual)">
-                            <i class="bi bi-eye"></i>
-                        </a>
-                        <a asp-action="Excluir" asp-route-id="@Model?.Id" class="btn btn-outline-danger btn-sm" title="Excluir" onclick="return confirm('Confirma exclusão desta pessoa?');">
-                            <i class="bi bi-trash"></i>
-                        </a>
-                        <a asp-action="Agendar" asp-route-id="@Model?.Id" class="btn btn-outline-success btn-sm" title="Agendar horário">
-                            <i class="bi bi-calendar-plus"></i>
-                        </a>
-                    </div>
-
-                    <hr class="w-100 my-3" />
-
-                    <div class="w-100">
-                        @* Uso de list-unstyled + utilitários para evitar o fundo branco do list-group-item *@
-                        <div class="list-unstyled w-100">
-                            <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
-                                <div class="text-muted small">Nascimento</div>
-                                <div>@(Model?.DataNascimento == default ? "-" : Model?.DataNascimento.ToString("dd/MM/yyyy"))</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
-                                <div class="text-muted small">Cadastro</div>
-                                <div>@(Model?.DataCadastro == default ? "-" : Model?.DataCadastro.ToString("dd/MM/yyyy HH:mm"))</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
-                                <div class="text-muted small">Celular</div>
-                                <div>@(string.IsNullOrWhiteSpace(Model?.Celular) ? "-" : Model?.Celular)</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center py-2">
-                                <div class="text-muted small">Telefone</div>
-                                <div>@(string.IsNullOrWhiteSpace(Model?.Telefone) ? "-" : Model?.Telefone)</div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="d-flex gap-2 mt-3">
+                    <a asp-action="Editar" asp-route-id="@Model?.Id" class="btn btn-outline-warning btn-sm" title="Editar">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a asp-action="Exibir" asp-route-id="@Model?.Id" class="btn btn-outline-info btn-sm d-none" title="Visualizar (atual)">
+                        <i class="bi bi-eye"></i>
+                    </a>
+                    <a asp-action="Excluir" asp-route-id="@Model?.Id" class="btn btn-outline-danger btn-sm" title="Excluir" onclick="return confirm('Confirma exclusão desta pessoa?');">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                    <a asp-action="Agendar" asp-route-id="@Model?.Id" class="btn btn-outline-success btn-sm" title="Agendar horário">
+                        <i class="bi bi-calendar-plus"></i>
+                    </a>
                 </div>
-            </div>
-        </div>
 
-        <!-- Detalhes / Endereço -->
-        <div class="col-12 col-md-8">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
-                        <div>
-                            <h5 class="card-title mb-0">Informações</h5>
-                            <small class="text-muted">Detalhes completos</small>
-                        </div>
-                        <div class="d-flex gap-2">
-                            <a asp-action="Lista" class="btn btn-outline-secondary btn-sm">Voltar</a>
-                            <a asp-action="Criar" class="btn btn-outline-primary btn-sm">Nova pessoa</a>
-                        </div>
-                    </div>
+                <hr class="w-100 my-3" />
 
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <div class="card border-0">
-                                <div class="card-body p-0">
-                                    <h6 class="text-uppercase text-muted small mb-2">Documento</h6>
-                                    <p class="mb-0">@Model?.Cpf</p>
-                                </div>
-                            </div>
+                <div class="w-100">
+                    @* Uso de list-unstyled + utilitários para evitar o fundo branco do list-group-item *@
+                    <div class="list-unstyled w-100">
+                        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <div class="text-muted small">Nascimento</div>
+                            <div>@(Model?.DataNascimento == default ? "-" : Model?.DataNascimento.ToString("dd/MM/yyyy"))</div>
                         </div>
-
-                        <div class="col-12">
-                            <h6 class="text-uppercase text-muted small mb-2">Endereço</h6>
-                            @if (Model?.Endereco is not null && !string.IsNullOrWhiteSpace(Model.Endereco.Rua))
-                            {
-                                <div class="card border-0">
-                                    <div class="card-body p-2">
-                                        <div class="row">
-                                            <div class="col-12 col-lg-8">
-                                                <div class="fw-semibold">
-                                                    @Model.Endereco.Rua @if(!string.IsNullOrWhiteSpace(Model.Endereco.Numero)){
-                                                    <span class="fw-light">, @Model.Endereco.Numero</span>
-                                                }
-                                            </div>
-                                            <div class="text-muted small">@Model.Endereco.Bairro — @Model.Endereco.Cidade / @Model.Endereco.Estado</div>
-                                            @if (!string.IsNullOrWhiteSpace(Model.Endereco.Complemento))
-                                            {
-                                                <div class="text-muted small mt-1">Complemento: @Model.Endereco.Complemento</div>
-                                            }
-                                        </div>
-                                        <div class="col-12 col-lg-4 text-lg-end mt-2 mt-lg-0">
-                                            <span class="badge bg-secondary">CEP @Model.Endereco.CEP</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                                        }
-                                                        else
-                            {
-                                <div class="text-muted">Endereço não informado.</div>
-                            }
+                        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <div class="text-muted small">Cadastro</div>
+                            <div>@(Model?.DataCadastro == default ? "-" : Model?.DataCadastro.ToString("dd/MM/yyyy HH:mm"))</div>
                         </div>
-
-                        <div class="col-12">
-                            <h6 class="text-uppercase text-muted small mb-2">Observações</h6>
-                            <div class="border rounded p-3 text-muted">
-                                Sem observações no momento.
-                            </div>
+                        <div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+                            <div class="text-muted small">Celular</div>
+                            <div>@(string.IsNullOrWhiteSpace(Model?.Celular) ? "-" : Model?.Celular)</div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <div class="text-muted small">Telefone</div>
+                            <div>@(string.IsNullOrWhiteSpace(Model?.Telefone) ? "-" : Model?.Telefone)</div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
+
+    <!-- Detalhes / Endereço -->
+    <div class="col-12 col-md-8">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h5 class="card-title mb-0">Informações</h5>
+                        <small class="text-muted">Detalhes completos</small>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <a asp-action="Lista" class="btn btn-outline-secondary btn-sm">Voltar</a>
+                        <a asp-action="Criar" class="btn btn-outline-primary btn-sm">Nova pessoa</a>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card border-0">
+                            <div class="card-body p-0">
+                                <h6 class="text-uppercase text-muted small mb-2">Documento</h6>
+                                <p class="mb-0">@Model?.Cpf</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <h6 class="text-uppercase text-muted small mb-2">Endereço</h6>
+                        @if (Model?.Endereco is not null && !string.IsNullOrWhiteSpace(Model.Endereco.Rua))
+                        {
+                            <div class="card border-0">
+                                <div class="card-body p-2">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-8">
+                                            <div class="fw-semibold">
+                                                @Model.Endereco.Rua @if(!string.IsNullOrWhiteSpace(Model.Endereco.Numero)){
+                                                <span class="fw-light">, @Model.Endereco.Numero</span>
+                                            }
+                                        </div>
+                                        <div class="text-muted small">@Model.Endereco.Bairro — @Model.Endereco.Cidade / @Model.Endereco.Estado</div>
+                                        @if (!string.IsNullOrWhiteSpace(Model.Endereco.Complemento))
+                                        {
+                                            <div class="text-muted small mt-1">Complemento: @Model.Endereco.Complemento</div>
+                                        }
+                                    </div>
+                                    <div class="col-12 col-lg-4 text-lg-end mt-2 mt-lg-0">
+                                        <span class="badge bg-secondary">CEP @Model.Endereco.CEP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                            else
+                    {
+                        <div class="text-muted">Endereço não informado.</div>
+                    }
+                </div>
+
+                <div class="col-12">
+                    <h6 class="text-uppercase text-muted small mb-2">Observações</h6>
+                    <div class="border rounded p-3 text-muted">
+                        @if (string.IsNullOrWhiteSpace(Model?.Observacao))
+                        {
+                            <span>Sem observações no momento.</span>
+                        }
+                        else
+                        {
+                            @Model.Observacao
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
 </div>

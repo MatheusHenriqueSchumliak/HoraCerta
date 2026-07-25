@@ -1,0 +1,72 @@
+name: SonarCloud Analysis
+
+on:
+  push:
+    branches:
+      - master
+      - feature-implementa-sonar
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
+
+      - name: Install SonarCloud scanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Install coverage tool
+        run: dotnet tool install --global dotnet-coverage
+
+      - name: Restore dependencies
+        run: dotnet restore HoraCerta/HoraCerta.sln
+
+      - name: Begin SonarCloud analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          dotnet sonarscanner begin \
+            /k:"MatheusHenriqueSchumliak_HoraCerta" \
+            /o:"mhs-developer" \
+            /d:sonar.token="$SONAR_TOKEN" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.cs.vscoveragexml.reportsPaths="coverage.xml" \
+            /d:sonar.exclusions="**/Migrations/**,**/bin/**,**/obj/**,**/wwwroot/lib/**" \
+            /d:sonar.test.exclusions="**/*Tests.cs,**/*Test.cs"
+
+      - name: Build
+        run: dotnet build HoraCerta/HoraCerta.sln --no-restore --configuration Release
+
+      - name: Run tests with coverage
+        run: |
+          dotnet-coverage collect "dotnet test HoraCerta/HoraCerta.sln --no-build --configuration Release --verbosity normal" -f xml -o "coverage.xml"
+
+      - name: End SonarCloud analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: dotnet sonarscanner end /d:sonar.token="$SONAR_TOKEN"

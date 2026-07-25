@@ -2,6 +2,7 @@
     const SIDEBAR_KEY = 'hc_sidebar_collapsed';
     const SIDEBAR_ID = 'appSidebar';
     const TOGGLE_ID = 'sidebarToggle';
+    const ICONTOGGLE_ID = 'sidebarToggleIcon';
 
     function salvarSidebarEstado(collapsed) {
         try {
@@ -16,12 +17,25 @@
             return false;
         }
     }
+    function atualizarIconeSidebar() {
+        const sidebar = document.getElementById(SIDEBAR_ID);
+        const icon = document.getElementById(ICONTOGGLE_ID);
+        if (!sidebar || !icon) return;
+        if (sidebar.classList.contains('collapsed')) {
+            icon.classList.remove('bi-chevron-left');
+            icon.classList.add('bi-chevron-right');
+        } else {
+            icon.classList.remove('bi-chevron-right');
+            icon.classList.add('bi-chevron-left');
+        }
+    }
 
     function aplicarSidebarEstado() {
         const sidebar = document.getElementById(SIDEBAR_ID);
         if (!sidebar) return;
         const collapsed = obterSidebarEstado();
         sidebar.classList.toggle('collapsed', collapsed);
+        atualizarIconeSidebar();
     }
 
     function toggleSidebar() {
@@ -29,6 +43,7 @@
         if (!sidebar) return;
         const isCollapsed = sidebar.classList.toggle('collapsed');
         salvarSidebarEstado(isCollapsed);
+        atualizarIconeSidebar();
     }
 
     // registra evento e inicializa após DOM pronto

@@ -12,12 +12,12 @@ namespace HoraCerta.Domain.Entities
 		public DateTime DataNascimento { get; set; }
 		public string Cpf { get; set; } = string.Empty;
 		public string Observacao { get; set; } = string.Empty;
-		public virtual Endereco Endereco { get; set; } 
+		public virtual Endereco Endereco { get; set; }
 		public StatusCadastro Status { get; set; } = StatusCadastro.Ativo;
 
 		public Pessoa() { }
 
-		public Pessoa Criar(string nome, string sobreNome, string? telefone, string celular, DateTime dataNascimento, string cpf, Guid enderecoId, Endereco endereco, StatusCadastro status)
+		public Pessoa Criar(string nome, string sobreNome, string? telefone, string celular, DateTime dataNascimento, string cpf, string observacao, Endereco endereco, StatusCadastro status)
 		{
 			Nome = nome;
 			SobreNome = sobreNome;
@@ -25,13 +25,14 @@ namespace HoraCerta.Domain.Entities
 			Celular = celular;
 			DataNascimento = dataNascimento;
 			Cpf = cpf;
+			Observacao = observacao;
 			Endereco = endereco;
 			Status = status;
 
 			return this;
 		}
 
-		public Pessoa Atualizar(string nome, string sobreNome, string? telefone, string celular, DateTime dataNascimento, string cpf, StatusCadastro status)
+		public Pessoa Atualizar(string nome, string sobreNome, string? telefone, string celular, DateTime dataNascimento, string cpf, string observacao, StatusCadastro status)
 		{
 			Nome = nome;
 			SobreNome = sobreNome;
@@ -39,6 +40,7 @@ namespace HoraCerta.Domain.Entities
 			Celular = celular;
 			DataNascimento = dataNascimento;
 			Cpf = cpf;
+			Observacao = observacao;
 			Status = status;
 			DataAtualizacao = DateTime.UtcNow;
 			return this;

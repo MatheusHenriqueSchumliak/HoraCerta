@@ -23,6 +23,20 @@
     <partial name="_ValidationScriptsPartial" />
     <validation-summary />
 
-    <!-- Remova a função inline e inclua o script externo -->
+    <!-- script externo -->
     <script src="~/js/Pessoa/Criar.js" asp-append-version="true"></script>
+    <script src="~/js/alertas.js" asp-append-version="true"></script>
+
+    @if (TempData["AlertaSucesso"] != null)
+    {
+        <script>
+            alertaAviso('@TempData["AlertaSucesso"]');
+        </script>
+    }
+    @if (TempData["AlertaErro"] != null)
+    {
+        <script>
+            alertaAviso('@Html.Raw(TempData["AlertaErro"])');
+        </script>
+    }
 }
