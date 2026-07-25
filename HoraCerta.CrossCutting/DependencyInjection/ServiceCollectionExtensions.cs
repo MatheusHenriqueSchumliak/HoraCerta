@@ -14,8 +14,7 @@ public static class ServiceCollectionExtensions
 	public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
 	{
 		//Registro de dependências:
-		#region Application Services
-		//services.AddScoped<IProfissionalService, ProfissionalService>();
+		#region Application Services		
 		services.AddScoped<IPessoaService, PessoaService>();
 		services.AddScoped<IEspecialidadeService, EspecialidadeService>();
 		#endregion
@@ -24,7 +23,6 @@ public static class ServiceCollectionExtensions
 		services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 		services.AddScoped<IPessoaRepository, PessoaRepository>();
 		services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
-		//services.AddScoped<IProfissionalRepository, ProfissionalRepository>();
 		#endregion
 
 		#region CrossCutting

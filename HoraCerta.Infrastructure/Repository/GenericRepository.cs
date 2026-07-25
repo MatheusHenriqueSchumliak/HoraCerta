@@ -27,7 +27,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
 		}
 		catch (Exception ex)
 		{
-			throw new Exception(" ", ex);
+			throw new InvalidOperationException($"Erro ao obter entidade {typeof(T).Name} por ID {id}", ex);
 		}
 	}
 
@@ -63,7 +63,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
 		}
 		catch (Exception ex)
 		{
-			throw new Exception(" ", ex);
+			throw new InvalidOperationException($"Erro ao adicionar entidade {typeof(T).Name}", ex);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
 		}
 		catch (Exception ex)
 		{
-			throw new Exception(" ", ex);
+			throw new InvalidOperationException($"Erro ao adicionar múltiplas entidades {typeof(T).Name}", ex);
 		}
 	}
 
@@ -87,7 +87,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
 		}
 		catch (Exception ex)
 		{
-			throw new Exception(" ", ex);
+			throw new InvalidOperationException($"Erro ao remover entidade {typeof(T).Name}", ex);
 		}
 	}
 
@@ -99,7 +99,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
 		}
 		catch (Exception ex)
 		{
-			throw new Exception(" ", ex);
+			throw new InvalidOperationException($"Erro ao remover múltiplas entidades {typeof(T).Name}", ex);
 		}
 	}
 
@@ -111,7 +111,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
 		}
 		catch (Exception ex)
 		{
-			throw new Exception(" ", ex);
+			throw new InvalidOperationException($"Erro ao atualizar entidade {typeof(T).Name}", ex);
 		}
 	}
 
