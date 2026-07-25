@@ -169,8 +169,8 @@ initControladorCep();
     }
 
     function init() {
-        var elsPhone = document.querySelectorAll('input[data-mask="phone"]');
-        var elsCpf = document.querySelectorAll('input[data-mask="cpf"]');
+        let elsPhone = document.querySelectorAll('input[data-mask="phone"]');
+        let elsCpf = document.querySelectorAll('input[data-mask="cpf"]');
         elsPhone.forEach(applyMaskToInput);
         elsCpf.forEach(applyMaskToInput);
     }
