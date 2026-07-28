@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11819.183 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoraCerta", "HoraCerta.csproj", "{8B5481C1-0D99-40C0-BE40-E3E143D7D793}"
 EndProject
@@ -22,6 +22,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoraCerta.Infrastructure", "..\HoraCerta.Infrastructure\HoraCerta.Infrastructure.csproj", "{0BFF743E-7B4A-4275-A548-C57B9EF2AD21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoraCerta.CrossCutting", "..\HoraCerta.CrossCutting\HoraCerta.CrossCutting.csproj", "{77CF4D2F-6032-457D-8F0A-1B0F299CA264}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 - Test", "06 - Test", "{BC61646F-5102-4780-B4F9-C7A4DEB05E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoraCerta.Test", "..\TestProject1\HoraCerta.Test.csproj", "{5AE56726-DD25-42F8-9EF5-1209440EE3CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +53,10 @@ Global
 		{77CF4D2F-6032-457D-8F0A-1B0F299CA264}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77CF4D2F-6032-457D-8F0A-1B0F299CA264}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77CF4D2F-6032-457D-8F0A-1B0F299CA264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AE56726-DD25-42F8-9EF5-1209440EE3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE56726-DD25-42F8-9EF5-1209440EE3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE56726-DD25-42F8-9EF5-1209440EE3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE56726-DD25-42F8-9EF5-1209440EE3CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{97BBA3DA-51E2-4917-85EC-26AA206147F7} = {369CB01D-A1A7-72D2-AABC-3F0945D148A2}
 		{0BFF743E-7B4A-4275-A548-C57B9EF2AD21} = {62D68EB9-E7E2-4478-8B46-FC974258E4F7}
 		{77CF4D2F-6032-457D-8F0A-1B0F299CA264} = {EA3FCE86-A01E-4F4E-A888-47D11420B185}
+		{5AE56726-DD25-42F8-9EF5-1209440EE3CC} = {BC61646F-5102-4780-B4F9-C7A4DEB05E15}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B516B3B9-3740-4C45-822B-C1B66DD5D6D4}
