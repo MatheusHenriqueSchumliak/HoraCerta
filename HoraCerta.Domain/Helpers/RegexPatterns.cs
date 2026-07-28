@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace HoraCerta.CrossCutting.Helpers
+namespace HoraCerta.Domain.Helpers
 {
 	public static partial class RegexPatterns
 	{

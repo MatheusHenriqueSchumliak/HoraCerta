@@ -12,7 +12,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\HoraCerta.Application\HoraCerta.Application.csproj" />
 		<ProjectReference Include="..\HoraCerta.Domain\HoraCerta.Domain.csproj" />
+		<ProjectReference Include="..\HoraCerta.Infrastructure\HoraCerta.Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

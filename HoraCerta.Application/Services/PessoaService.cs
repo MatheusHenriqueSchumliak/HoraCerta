@@ -4,7 +4,7 @@ using HoraCerta.Application.ViewModels.Common;
 using HoraCerta.Application.ViewModels.Pessoa;
 using HoraCerta.Application.Factorys;
 using HoraCerta.Domain.Entities.Base;
-using HoraCerta.CrossCutting.Helpers;
+using HoraCerta.Domain.Helpers;
 
 namespace HoraCerta.Application.Services;
 

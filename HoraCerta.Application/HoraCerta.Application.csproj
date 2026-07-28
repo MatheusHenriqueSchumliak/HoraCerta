@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HoraCerta.CrossCutting\HoraCerta.CrossCutting.csproj" />
     <ProjectReference Include="..\HoraCerta.Domain\HoraCerta.Domain.csproj" />
   </ItemGroup>
 
