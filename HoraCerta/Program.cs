@@ -1,8 +1,8 @@
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using HoraCerta.Application.Validators;
-using HoraCerta.CrossCutting.DependencyInjection;
 using HoraCerta.Infrastructure.DependencyInjection;
+using HoraCerta.CrossCutting.DependencyInjection;
+using HoraCerta.Application.Validators;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 namespace HoraCerta;
 
@@ -27,11 +27,12 @@ public class Program
 		// Habilitar auto-validation e adapters client-side (opcional, mas recomendado)
 		builder.Services.AddFluentValidationAutoValidation();
 		builder.Services.AddFluentValidationClientsideAdapters();
-		// Adiciona injeção de dependência da infrastructure
+
+		// Adiciona injeção de dependência da infrastructure (DbContext + Repositories + Services)
 		builder.Services.AddInfrastructureServices(builder.Configuration);
 
-		// Adiciona injeção de dependência personalizada
-		builder.Services.AddDependencyInjection(builder.Configuration);
+		// Adiciona injeção de dependência do CrossCutting (ViaCep, etc)
+		builder.Services.AddCrossCuttingServices(builder.Configuration);
 
 		var app = builder.Build();
 
