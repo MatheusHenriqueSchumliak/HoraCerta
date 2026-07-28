@@ -32,7 +32,7 @@
     <span asp-validation-for="Cpf" class="text-danger"></span>
 </div>
 <div class="col-md-4">
-    <label class="form-label">Tipo de Pessoa</label>
+    <label class="form-label" asp-for="EhProfissional">Tipo de Pessoa</label>
     <div>
         <input type="radio" asp-for="EhProfissional" value="false" id="clienteRadio" class="form-check-input" checked="@(Model.EhProfissional == false)" />
         <label for="clienteRadio" class="form-check-label me-3">Cliente</label>
