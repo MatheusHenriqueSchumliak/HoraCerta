@@ -4,7 +4,7 @@ using HoraCerta.Application.ViewModels.Common;
 using HoraCerta.Application.ViewModels.Pessoa;
 using HoraCerta.Application.Factorys;
 using HoraCerta.Domain.Entities.Base;
-using System.Text.RegularExpressions;
+using HoraCerta.CrossCutting.Helpers;
 
 namespace HoraCerta.Application.Services;
 
@@ -30,11 +30,11 @@ public class PessoaService(IPessoaRepository pessoaRepository) : IPessoaService
 	public async Task<ResultadoOperacao> Criar(PessoaViewModel model)
 	{
 		// Limpa o CPF para conter apenas números
-		model.Cpf = Regex.Replace(model.Cpf ?? "", @"\D", "");
+		model.Cpf = RegexPatterns.ValidaSeEhSomenteDigitos(model.Cpf);
 
 		// Limpa Telefone e Celular para conter apenas números
-		model.Telefone = string.IsNullOrWhiteSpace(model.Telefone) ? null : Regex.Replace(model.Telefone, @"\D", "");
-		model.Celular = Regex.Replace(model.Celular ?? "", @"\D", "");
+		model.Telefone = RegexPatterns.ValidaSeEhSomenteDigitos(model.Telefone);
+		model.Celular = RegexPatterns.ValidaSeEhSomenteDigitos(model.Celular);
 
 		var existente = await _pessoaRepository.ObterPorCpf(model.Cpf);
 		if (existente != null)
@@ -56,11 +56,11 @@ public class PessoaService(IPessoaRepository pessoaRepository) : IPessoaService
 		if (existente is null) throw new InvalidOperationException("Pessoa não encontrada.");
 
 		// Limpa o CPF para conter apenas números
-		model.Cpf = Regex.Replace(model.Cpf ?? "", @"\D", "");
+		model.Cpf = RegexPatterns.ValidaSeEhSomenteDigitos(model.Cpf);
 
 		// Limpa Telefone e Celular para conter apenas números
-		model.Telefone = string.IsNullOrWhiteSpace(model.Telefone) ? null : Regex.Replace(model.Telefone, @"\D", "");
-		model.Celular = Regex.Replace(model.Celular ?? "", @"\D", "");
+		model.Telefone = RegexPatterns.ValidaSeEhSomenteDigitos(model.Telefone);
+		model.Celular = RegexPatterns.ValidaSeEhSomenteDigitos(model.Celular);
 
 		// Atualiza a entidade existente usando a factory
 		PessoaFactory.Atualizar(existente, model);
