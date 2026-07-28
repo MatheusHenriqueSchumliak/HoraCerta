@@ -1,7 +1,11 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+﻿using HoraCerta.Application.Interfaces.IRepository;
+using HoraCerta.Application.Interfaces.IServices;
+using HoraCerta.Application.Services;
 using HoraCerta.Infrastructure.Context;
+using HoraCerta.Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace HoraCerta.Infrastructure.DependencyInjection
 {
@@ -26,6 +30,17 @@ namespace HoraCerta.Infrastructure.DependencyInjection
 
 			services.AddMemoryCache();
 			services.AddHealthChecks().AddDbContextCheck<HoraCertaContext>("HoraCerta DB");
+
+			#region Data Repositories
+			services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+			services.AddScoped<IPessoaRepository, PessoaRepository>();
+			services.AddScoped<IEspecialidadeRepository, EspecialidadeRepository>();
+			#endregion);
+
+			#region Application Services		
+			services.AddScoped<IPessoaService, PessoaService>();
+			services.AddScoped<IEspecialidadeService, EspecialidadeService>();
+			#endregion
 
 			return services;
 		}
